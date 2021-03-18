@@ -96,19 +96,6 @@ terraform plan
       }
     }
 
-    stage('DESTROY') {
-      agent {
-        node {
-          label 'master'
-        }
-
-      }
-      steps {
-        sleep 150
-        sh 'terraform destroy -auto-approve'
-      }
-    }
-
   }
   environment {
     instance = 'inctance1'
