@@ -93,9 +93,15 @@ terraform plan
         }
 
         stage('Deploy') {
+          agent {
+            node {
+              label 'master'
+            }
+
+          }
           steps {
-            sh '''sleep 10 
-terraform apply -auto-approve'''
+            sleep 10
+            sh 'terraform apply -auto-approve'
           }
         }
 
