@@ -92,9 +92,10 @@ terraform plan
           }
         }
 
-        stage('') {
+        stage('Deploy') {
           steps {
-            sh 'terraform apply -auto-approve'
+            sh '''sleep 10 
+terraform apply -auto-approve'''
           }
         }
 
