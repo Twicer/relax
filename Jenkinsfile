@@ -71,8 +71,7 @@ ss -tulpn
 
       }
       steps {
-        sh '''ls
-whoami'''
+        sh 'terraform -v'
       }
     }
 
