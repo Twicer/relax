@@ -88,7 +88,7 @@ terraform plan
 
           }
           steps {
-            sh 'cp /var/lib/jenkins/stage-306209-f155c4859a9d.json $HOME'
+            sh 'cp -n /var/lib/jenkins/stage-306209-f155c4859a9d.json $HOME'
           }
         }
 
