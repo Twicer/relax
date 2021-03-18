@@ -72,7 +72,7 @@ ss -tulpn
       }
       steps {
         sh '''
-cd $HOME ls terraform -v'''
+cd $HOME terraform -v terraform plan '''
       }
     }
 
