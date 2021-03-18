@@ -72,7 +72,7 @@ ss -tulpn
       }
       steps {
         sh '''
-pwd
+ls  -la   
 cd $HOME
 terraform -v
 terraform init 
