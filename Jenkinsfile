@@ -51,28 +51,15 @@ sudo docker images
     }
 
     stage('Test') {
-      parallel {
-        stage('Test') {
-          steps {
-            sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
+      steps {
+        sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
 sudo docker run -d  --restart=always --network host --name web relaxnote'''
-          }
-        }
-
-        stage('ConnectionTest') {
-          steps {
-            sh '''
-
-
-export MYIP=$(curl ifconfig.me)
+        sh '''export MYIP=$(curl ifconfig.me)
 MYIP=$(echo $MYIP":8080")
 
 curl $MYIP
 ss -tulpn
 '''
-          }
-        }
-
       }
     }
 
