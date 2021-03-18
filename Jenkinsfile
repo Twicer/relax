@@ -95,6 +95,12 @@ terraform plan
       }
     }
 
+    stage('Deploy') {
+      steps {
+        sh 'terraform apply -auto-approve'
+      }
+    }
+
   }
   environment {
     instance = 'inctance1'
