@@ -27,8 +27,8 @@ sudo systemctl enable docker'''
 FROM python:3.5.10-slim
 
 COPY . .
-EXPOSE 80
-CMD python3 -m http.server 80
+EXPOSE 8080
+CMD python3 -m http.server 8080
 EOF'''
           }
         }
@@ -54,7 +54,7 @@ sudo docker images
       parallel {
         stage('Test') {
           steps {
-            sh '''#sudo docker run -d --restart=always -p 80:80 alexey/relaxnote
+            sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
 sudo docker run -d  --restart=always --network host --name web relaxnote'''
           }
         }
@@ -65,7 +65,8 @@ sudo docker run -d  --restart=always --network host --name web relaxnote'''
 
 
 export MYIP=$(curl ifconfig.me)
-echo $MYIP
+MYIP=$(echo $MYIP":8080")
+
 curl $MYIP
 ss -tulpn
 '''
