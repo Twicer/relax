@@ -27,8 +27,8 @@ sudo systemctl enable docker'''
 FROM python:3.5.10-slim
 
 COPY . .
-EXPOSE 8080
-CMD python3 -m http.server 8080
+EXPOSE 80
+CMD python3 -m http.server 80
 EOF'''
           }
         }
