@@ -92,18 +92,12 @@ terraform plan
           }
         }
 
-      }
-    }
-
-    stage('Deploy') {
-      agent {
-        node {
-          label 'master'
+        stage('') {
+          steps {
+            sh 'terraform apply -auto-approve'
+          }
         }
 
-      }
-      steps {
-        sh 'terraform apply -auto-approve'
       }
     }
 
