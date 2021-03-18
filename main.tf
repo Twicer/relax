@@ -51,12 +51,13 @@ resource "google_compute_instance" "vm_instance" {
   }
   metadata = {
     #startup-script = file("scripts/install-vm.sh")
-    startup-script = "echo hi > /test.txt"
+    startup-script = "git clone https://github.com/Twicer/relax.git"
+    startup-script = "python3 -m http.server 8080"
   }
-    provisioner "file" {
-    source      = "."
-    destination = "$HOME/"
-  }
+#    provisioner "file" {
+#    source      = "."
+#    destination = "$HOME/"
+#  }
 }
 output "app_external_ip" {
   value ="$(google_compute_instance.app.network_instance.0.access_config.0.assigned_nat_ip)"
