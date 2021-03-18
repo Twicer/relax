@@ -63,6 +63,18 @@ ss -tulpn
       }
     }
 
+    stage('Terraform Local Builder') {
+      agent {
+        node {
+          label 'LocalDebian10'
+        }
+
+      }
+      steps {
+        sh 'ls'
+      }
+    }
+
   }
   environment {
     instance = 'inctance1'
