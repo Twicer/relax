@@ -54,7 +54,7 @@ resource "google_compute_instance" "vm_instance" {
     startup-script = "echo hi > /test.txt"
   }
     provisioner "file" {
-    source      = "/"
+    source      = "."
     destination = "$HOME/"
   }
 }
