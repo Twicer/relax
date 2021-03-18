@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
 
-  credentials = file("var/lib/jenkins/stage-306209-f155c4859a9d.json")
+  credentials = file("/var/lib/jenkins/stage-306209-f155c4859a9d.json")
   project = "stage-306209"
   region  = "us-central1"
   zone    = "us-central1-c"
