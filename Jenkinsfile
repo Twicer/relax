@@ -61,11 +61,14 @@ sudo docker run -d  --restart=always --network host --name web relaxnote'''
 
         stage('ConnectionTest') {
           steps {
-            sh '''#simple test
+            sh '''
+
+
 export MYIP=$(curl ifconfig.me)
-MYIP=$(echo "$MYIP:8080"
-curl $MYIP
-ss -tulpn'''
+echo $MYIP
+curl -P 8080 $MYIP
+ss -tulpn
+'''
           }
         }
 
