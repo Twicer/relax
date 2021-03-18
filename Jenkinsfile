@@ -71,10 +71,7 @@ ss -tulpn
 
       }
       steps {
-        sh '''ls  -la
-cd $HOME
-ls -la
-terraform -v
+        sh '''terraform -v
 terraform init
 terraform plan
 '''
