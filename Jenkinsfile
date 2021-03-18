@@ -54,7 +54,7 @@ sudo docker images
       parallel {
         stage('Test') {
           steps {
-            sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
+            sh '''#sudo docker run -d --restart=always -p 80:80 alexey/relaxnote
 sudo docker run -d  --restart=always --network host --name web relaxnote'''
           }
         }
@@ -66,7 +66,7 @@ sudo docker run -d  --restart=always --network host --name web relaxnote'''
 
 export MYIP=$(curl ifconfig.me)
 echo $MYIP
-curl -P 8080 $MYIP
+curl $MYIP
 ss -tulpn
 '''
           }
