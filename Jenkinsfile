@@ -66,12 +66,13 @@ ss -tulpn
     stage('Terraform Local Builder') {
       agent {
         node {
-          label 'LocalDebian10'
+          label 'master'
         }
 
       }
       steps {
-        sh 'ls'
+        sh '''ls
+whoami'''
       }
     }
 
