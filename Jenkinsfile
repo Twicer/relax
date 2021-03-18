@@ -46,8 +46,29 @@ EOF'''
       steps {
         sh '''sudo docker build -t relaxnote .
 sudo docker images
-#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
+'''
+      }
+    }
+
+    stage('Test') {
+      parallel {
+        stage('Test') {
+          steps {
+            sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
 sudo docker run -d  --restart=always --network host --name web relaxnote'''
+          }
+        }
+
+        stage('ConnectionTest') {
+          steps {
+            sh '''#simple test
+export MYIP=$(curl ifconfig.me)
+MYIP=$(echo "$MYIP:8080"
+curl $MYIP
+ss -tulpn'''
+          }
+        }
+
       }
     }
 
