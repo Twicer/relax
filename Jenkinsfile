@@ -77,6 +77,7 @@ ss -tulpn
 terraform init
 terraform plan
 '''
+            sh 'terraform apply -auto-approve'
           }
         }
 
@@ -89,19 +90,6 @@ terraform plan
           }
           steps {
             sh 'cp -n /var/lib/jenkins/stage-306209-f155c4859a9d.json $HOME'
-          }
-        }
-
-        stage('Deploy') {
-          agent {
-            node {
-              label 'master'
-            }
-
-          }
-          steps {
-            sleep 10
-            sh 'terraform apply -auto-approve'
           }
         }
 
