@@ -64,17 +64,28 @@ ss -tulpn
     }
 
     stage('Terraform Local Builder') {
-      agent {
-        node {
-          label 'master'
-        }
+      parallel {
+        stage('Terraform Local Builder') {
+          agent {
+            node {
+              label 'master'
+            }
 
-      }
-      steps {
-        sh '''terraform -v
+          }
+          steps {
+            sh '''terraform -v
 terraform init
 terraform plan
 '''
+          }
+        }
+
+        stage('copy') {
+          steps {
+            sh 'cp /var/lib/jenkins/stage-306209-f155c4859a9d.json $HOME'
+          }
+        }
+
       }
     }
 
