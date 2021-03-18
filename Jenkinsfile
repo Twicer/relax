@@ -71,7 +71,8 @@ ss -tulpn
 
       }
       steps {
-        sh 'terraform -v'
+        sh '''
+cd $HOME ls terraform -v'''
       }
     }
 
