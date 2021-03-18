@@ -24,9 +24,30 @@ sudo systemctl enable docker'''
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
-        sh 'echo "Success"'
+        sh '''echo "Success"
+
+
+
+
+
+
+echo "Success"
+
+
+
+
+
+
+echo "Success"
+
+
+
+
+
+
+'''
       }
     }
 
