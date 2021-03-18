@@ -41,7 +41,7 @@ resource "google_compute_instance" "vm_instance" {
   machine_type = "f1-micro"
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-cloud/debian-10"
     }
   }
   network_interface {
@@ -55,7 +55,7 @@ resource "google_compute_instance" "vm_instance" {
   }
     provisioner "file" {
     source      = "/"
-    destination = "$HOME"
+    destination = "$HOME/"
   }
 }
 output "app_external_ip" {
