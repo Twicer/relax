@@ -74,7 +74,7 @@ ss -tulpn
         sh '''
 ls  -la   
 cd $HOME
-terraform -v
+ls -la terraform -v
 terraform init 
 terraform plan
 '''
