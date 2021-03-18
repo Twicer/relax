@@ -53,7 +53,7 @@ sudo docker images
     stage('Test') {
       steps {
         sh '''#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
-sudo docker run -d  --restart=always --network host --name web relaxnote'''
+sudo docker run -d  --restart=always --network host relaxnote'''
         sh '''export MYIP=$(curl ifconfig.me)
 MYIP=$(echo $MYIP":8080")
 
