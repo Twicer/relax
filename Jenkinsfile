@@ -72,7 +72,7 @@ ss -tulpn
       }
       steps {
         sh '''
-pwd cd $HOME terraform -v terraform plan '''
+pwd cd $HOME terraform -v terraform init terraform plan'''
       }
     }
 
