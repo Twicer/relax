@@ -50,9 +50,9 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
   metadata = {
-    #startup-script = file("scripts/install-vm.sh")
-    startup-script = "git clone https://github.com/Twicer/relax.git"
-    startup-script = "python3 -m http.server 8080"
+    startup-script = file("./install-vm.sh")
+    #startup-script = "git clone https://github.com/Twicer/relax.git"
+    #startup-script = "python3 -m http.server 8080"
   }
 #    provisioner "file" {
 #    source      = "."
