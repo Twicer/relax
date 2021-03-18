@@ -7,8 +7,10 @@ pipeline {
   }
   stages {
     stage('Build') {
-      steps {
-        sh '''sudo apt-get update
+      parallel {
+        stage('Build') {
+          steps {
+            sh '''sudo apt-get update
 
 
 
@@ -21,33 +23,31 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debi
 sudo apt-get update
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 sudo systemctl enable docker'''
+            sh '''cat > Dockerfile << EOF
+FROM python:3.5.10-slim
+
+COPY . .
+EXPOSE 8080
+CMD python3 -m http.server 8080
+EOF'''
+          }
+        }
+
+        stage('ls') {
+          steps {
+            sh 'ls .'
+          }
+        }
+
       }
     }
 
-    stage('error') {
+    stage('Docker Build') {
       steps {
-        sh '''echo "Success"
-
-
-
-
-
-
-echo "Success"
-
-
-
-
-
-
-echo "Success"
-
-
-
-
-
-
-'''
+        sh '''sudo docker build -t relaxnote .
+sudo docker images
+#sudo docker run -d --restart=always -p 8080:8080 alexey/relaxnote
+sudo docker run -d  --restart=always --network host --name web relaxnote'''
       }
     }
 
