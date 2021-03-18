@@ -81,6 +81,12 @@ terraform plan
         }
 
         stage('copy') {
+          agent {
+            node {
+              label 'master'
+            }
+
+          }
           steps {
             sh 'cp /var/lib/jenkins/stage-306209-f155c4859a9d.json $HOME'
           }
