@@ -77,6 +77,7 @@ ss -tulpn
 terraform init
 terraform plan
 '''
+            sh 'terraform destroy -auto-approve'
             sh 'terraform apply -auto-approve'
           }
         }
