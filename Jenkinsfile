@@ -79,7 +79,7 @@ terraform plan
 '''
             sh 'terraform destroy -auto-approve'
             sleep 10
-            sh 'terraform apply -auto-approve'
+            sh 'terraform apply'
           }
         }
 
