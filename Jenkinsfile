@@ -78,7 +78,7 @@ terraform init
 terraform plan
 '''
             sh 'terraform destroy -auto-approve'
-            sleep 5
+            sleep 10
             sh 'terraform apply -auto-approve'
           }
         }
